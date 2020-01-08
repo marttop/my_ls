@@ -63,7 +63,7 @@ node_t *fill_sub_node(node_t *file_infos, struct dirent *my_dirent,
 char *my_strcat(char *dest, char const *src);
 char *get_mode(struct stat *sb);
 char *my_strdup(char *str);
-void no_arg(void);
+void no_arg(char *flags);
 int my_ptrlen(char **str);
 int my_putstr(char const *str);
 void my_putchar(char c);
