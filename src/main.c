@@ -14,11 +14,11 @@ int main(int ac, char **av)
     files_t fa;
     char *test[2] = {".", NULL};
     infos_t *main_node = NULL;
-    if (ac == 1)
-        no_arg();
+    flags = parsor(av);
+    filepath = filepath_parsor(av, flags, &fa);
+    if (filepath[0] == NULL)
+        no_arg(flags);
     if (ac > 1) {
-        flags = parsor(av);
-        filepath = filepath_parsor(av, flags, &fa);
         if (filepath[0] != NULL) {
             main_node = get_data(filepath);
             show_data(main_node, flags, filepath, &fa);
