@@ -40,10 +40,13 @@ int flagcheck(char c, char *flags)
 void show_data(infos_t *node, char *flags, char **filepath, files_t *fa)
 {
     int done = 0;
+    fa->head = node;
+    if (flagcheck('r', flags))
+        reverse(fa);
     if (flagcheck('l', flags) && done == 0) {
-        print_l_flag(node, filepath, fa);
+        print_l_flag(filepath, fa);
         done = 1;
     }
     if (done == 0)
-        print_no_flags(node, filepath, fa);
+        print_no_flags(filepath, fa);
 }

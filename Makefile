@@ -16,6 +16,8 @@ SRC	=	src/main.c \
 		src/no_arg.c \
 		src/flag_check.c \
 		src/print_flags.c \
+		src/sorting_nodes.c \
+		src/nodes.c \
 		utils/error.c \
 		utils/my_strlen.c \
 		utils/my_strcat.c \
@@ -36,7 +38,7 @@ FFLAGS += -fprofile-arcs -ftest-coverage
 all	:	$(NAME)
 
 tests_run :
-	gcc -o test_run -O0 $(CFLAGS) $(FFLAGS) $(SRC_TEST)
+	$(CC) -o test_run -O0 $(CFLAGS) $(FFLAGS) $(SRC_TEST)
 	./test_run
 coverage :
 	/home/mszuts/.local/bin/gcovr --branch --exclude tests/

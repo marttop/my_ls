@@ -9,13 +9,12 @@
 
 int main(int ac, char **av)
 {
-    char *flags;
-    char **filepath;
     files_t fa;
+    char *flags = parsor(av);
+    fa.nm = 0;
+    char **filepath = filepath_parsor(av, flags, &fa);
     char *test[2] = {".", NULL};
     infos_t *main_node = NULL;
-    flags = parsor(av);
-    filepath = filepath_parsor(av, flags, &fa);
     if (filepath[0] == NULL)
         no_arg(flags);
     if (ac > 1) {
