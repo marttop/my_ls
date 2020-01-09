@@ -24,12 +24,17 @@ typedef struct files {
     char **filepath;
     int but;
     int nm;
+    struct infos *head;
+    struct infos *temp;
+    struct infos *bottom;
 } files_t;
 
 typedef struct infos {
     char *filepath;
     long int total_blocks;
     struct node *head;
+    struct node *temp;
+    struct node *bottom;
     struct infos *next;
     DIR *__dirp;
 } infos_t;
@@ -61,17 +66,22 @@ infos_t *fill_main_node(infos_t *main_node, char *filepath);
 node_t *fill_sub_node(node_t *file_infos, struct dirent *my_dirent,
                         infos_t *main_node, char *filepath);
 char *my_strcat(char *dest, char const *src);
+int count_nodes(infos_t *node);
+int count_sub_nodes(node_t *node);
 char *get_mode(struct stat *sb);
 char *my_strdup(char *str);
 void no_arg(char *flags);
 int my_ptrlen(char **str);
+int count_nodes(infos_t *node);
+void reverse(files_t *node);
+void get_end(files_t *fa);
 int my_putstr(char const *str);
 void my_putchar(char c);
 void my_put_nbr(long n);
-void print_no_flags(infos_t *node, char **filepath, files_t *fa);
+void print_no_flags(char **filepath, files_t *fa);
 void show_data(infos_t *node, char *flags, char **filepath, files_t *fa);
 int flagcheck(char c, char *flags);
-void print_l_flag(infos_t *node, char **filepath, files_t *fa);
+void print_l_flag(char **filepath, files_t *fa);
 void print_l_flag_file(char *str);
 
 

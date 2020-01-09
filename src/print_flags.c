@@ -24,45 +24,45 @@ void second_print(node_t *node)
     my_putstr(node->name);
 }
 
-void print_no_flags(infos_t *node, char **filepath, files_t *fa)
+void print_no_flags(char **filepath, files_t *fa)
 {
     int j = my_ptrlen(filepath), i = 0;
-    for (; node != NULL; i++) {
+    for (; fa->head != NULL; i++) {
         if (filepath[1] != NULL || (filepath[1] == NULL && fa->nm == 1)) {
-            my_putstr(node->filepath);
+            my_putstr(fa->head->filepath);
             my_putstr(":\n");
         }
-        for (int x = j; node->head != NULL; x++) {
-            my_putstr(node->head->name);
+        for (int x = j; fa->head->head != NULL; x++) {
+            my_putstr(fa->head->head->name);
             (x > i) ? my_putchar('\n') : my_putchar('\0');
-            node->head = node->head->next;
+            fa->head->head = fa->head->head->next;
         }
         if (j - 1 > i)
             my_putchar('\n');
-        closedir(node->__dirp);
-        node = node->next;
+        closedir(fa->head->__dirp);
+        fa->head = fa->head->next;
     }
 }
 
-void print_l_flag(infos_t *node, char **filepath, files_t *fa)
+void print_l_flag(char **filepath, files_t *fa)
 {
     int j = my_ptrlen(filepath), i = 0;
-    for (; node != NULL; i++) {
+    for (; fa->head != NULL; i++) {
         if (filepath[1] != NULL || (filepath[1] == NULL && fa->nm == 1)) {
-            my_putstr(node->filepath);
+            my_putstr(fa->head->filepath);
             my_putstr(":\n");
         }
         my_putstr("total ");
-        my_put_nbr(node->total_blocks);
+        my_put_nbr(fa->head->total_blocks);
         my_putchar('\n');
-        for (int x = j; node->head != NULL; x++) {
-            second_print(node->head);
+        for (int x = j; fa->head->head != NULL; x++) {
+            second_print(fa->head->head);
             (x > i) ? my_putchar('\n') : my_putchar('\0');
-            node->head = node->head->next;
+            fa->head->head = fa->head->head->next;
         }
         if (j - 1 > i)
             my_putchar('\n');
-        closedir(node->__dirp);
-        node = node->next;
+        closedir(fa->head->__dirp);
+        fa->head = fa->head->next;
     }
 }
