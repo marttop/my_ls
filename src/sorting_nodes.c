@@ -43,9 +43,9 @@ void reverse(files_t *fa)
 {
     int i = count_nodes(fa->head), j = 0;
     fa->temp = NULL;
-    fa->head->temp = NULL;
     get_end(fa);
     for (int a = 0; a < i; a++) {
+        fa->head->temp = NULL;
         j = count_sub_nodes(fa->head->head);
         for (int k = 0; k < j; k++) {
             s_pb_sub(fa->head);

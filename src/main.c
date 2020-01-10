@@ -9,9 +9,8 @@
 
 int main(int ac, char **av)
 {
-    files_t fa;
+    files_t fa = {0};
     char *flags = parsor(av);
-    fa.nm = 0;
     char **filepath = filepath_parsor(av, flags, &fa);
     char *test[2] = {".", NULL};
     infos_t *main_node = NULL;
