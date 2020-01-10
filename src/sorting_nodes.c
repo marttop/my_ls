@@ -7,18 +7,6 @@
 
 #include "my_ls.h"
 
-void s_ra(files_t *fa)
-{
-    infos_t *temp_node;
-    if (fa->head != NULL && fa->head->next != NULL) {
-        temp_node = fa->head->next;
-        fa->head->next = fa->bottom->next;
-        fa->bottom->next = fa->head;
-        fa->bottom = fa->head;
-        fa->head = temp_node;
-    }
-}
-
 void s_pb(files_t *fa)
 {
     infos_t *tmp_node = fa->head;

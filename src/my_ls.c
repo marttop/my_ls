@@ -37,7 +37,8 @@ char *get_mode(struct stat *sb)
     mode[6] = (S_IXGRP & sb->st_mode) ? 'x' : '-';
     mode[7] = (S_IROTH & sb->st_mode) ? 'r' : '-';
     mode[8] = (S_IWOTH & sb->st_mode) ? 'w' : '-';
-    mode[9] = (S_IXOTH & sb->st_mode) ? 'x' : '-';
+    if (S_ISVTX & sb->st_mode) mode[9] = 'T';
+    else mode[9] = (S_IXOTH & sb->st_mode) ? 'x' : '-';
     mode[10] = '\0';
     return (mode);
 }
