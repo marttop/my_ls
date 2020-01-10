@@ -70,6 +70,7 @@ char **filepath_parsor(char **src, char *flags, files_t *fa)
         closedir(__dirp);
     }
     files[k] = NULL;
+    check_files(files);
     filepath[j] = NULL;
     fa->but = filepath[0] == NULL ? 1 : 0;
     fa->files = files;

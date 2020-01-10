@@ -27,6 +27,7 @@ void second_print(node_t *node)
 void print_no_flags(char **filepath, files_t *fa)
 {
     int j = my_ptrlen(filepath), i = 0;
+    struct stat sb;
     for (; fa->head != NULL; i++) {
         if (filepath[1] != NULL || (filepath[1] == NULL && fa->nm == 1)) {
             my_putstr(fa->head->filepath);
