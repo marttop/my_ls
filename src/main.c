@@ -12,6 +12,7 @@ int main(int ac, char **av)
     files_t fa = {0};
     char *flags = parsor(av);
     char **filepath = filepath_parsor(av, flags, &fa);
+    check_files(filepath);
     char *test[2] = {".", NULL};
     infos_t *main_node = NULL;
     if (ac >= 1) {

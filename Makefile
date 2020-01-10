@@ -24,6 +24,7 @@ SRC	=	src/main.c \
 		utils/my_ptrlen.c \
 		utils/my_putstr.c \
 		utils/my_put_nbr.c \
+		utils/my_strcmp.c \
 
 SRC_TEST	=	tests/test_all.c \
 

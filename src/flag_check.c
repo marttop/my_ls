@@ -37,10 +37,20 @@ int flagcheck(char c, char *flags)
     return (0);
 }
 
+void __d(files_t *fa)
+{
+    infos_t *temp = fa->head;
+    while (temp != NULL) {
+        temp->head = NULL;
+        temp = temp->next;
+    }
+}
+
 void show_data(infos_t *node, char *flags, char **filepath, files_t *fa)
 {
     int done = 0;
     fa->head = node;
+    reverse(fa);
     if (flagcheck('r', flags))
         reverse(fa);
     if (flagcheck('l', flags) && done == 0) {
