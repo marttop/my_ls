@@ -13,7 +13,6 @@ SRC	=	src/main.c \
 		src/flag_parsor.c \
 		src/filepath_parsor.c \
 		src/my_ls.c \
-		src/no_arg.c \
 		src/flag_check.c \
 		src/print_flags.c \
 		src/sorting_nodes.c \
