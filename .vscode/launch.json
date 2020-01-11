@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/my_ls",
-            "args": ["src", "-lr", "utils", "../", "include"],
+            "args": ["-lt", "/dev", "utils"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
