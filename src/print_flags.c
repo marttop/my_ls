@@ -17,11 +17,12 @@ void second_print(node_t *node)
     my_putchar(' ');
     my_putstr(node->grp_name);
     my_putchar(' ');
-    if (node->device != 0) {
-        my_put_nbr(node->device);
+    if (node->device_max != 0) {
+        my_put_nbr(node->device_max);
         my_putstr(", ");
+        my_put_nbr(node->device_min);
     }
-    my_put_nbr(node->size);
+    else my_put_nbr(node->size);
     my_putchar(' ');
     my_putstr(node->date);
     my_putchar(' ');
