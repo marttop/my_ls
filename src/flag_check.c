@@ -13,17 +13,20 @@ void print_l_flag_file(char *str)
     if (stat(str, &sb) != -1) {
         my_putstr(get_mode(&sb));
         my_putchar(' ');
-        my_put_nbr(sb.st_nlink);
-        my_putchar(' ');
+        my_put_nbr(sb.st_nlink), my_putchar(' ');
         my_putstr(getpwuid(sb.st_uid)->pw_name);
         my_putchar(' ');
         my_putstr(getgrgid(sb.st_gid)->gr_name);
         my_putchar(' ');
-        my_put_nbr(sb.st_size);
+        if (sb.st_rdev != 0) {
+            my_put_nbr(sb.st_rdev / 256);
+            my_putstr(", ");
+            my_put_nbr(sb.st_rdev % 256);
+        }
+        else my_put_nbr(sb.st_size);
         my_putchar(' ');
         my_putstr(get_date(&sb));
-        my_putchar(' ');
-        my_putstr(str);
+        my_putchar(' '), my_putstr(str);
         my_putchar('\n');
     }
 }
