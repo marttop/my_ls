@@ -58,8 +58,8 @@ node_t *fill_sub_node(node_t *file_infos, struct dirent *my_dirent,
     my_strcat(new_filepath, my_dirent->d_name);
     stat(new_filepath, &sb);
     pwd = getpwuid(sb.st_uid), grp = getgrgid(sb.st_gid);
-    main_node->total_blocks += sb.st_blocks/2;
-    new_infos->mode = get_mode(&sb);
+    main_node->total_blocks += sb.st_blocks/2, new_infos->time = sb.st_mtime;
+    new_infos->mode = get_mode(&sb), new_infos->device = sb.st_rdev/256;
     new_infos->date = get_date(&sb);
     new_infos->usr_name = my_strdup(pwd->pw_name);
     new_infos->grp_name = my_strdup(grp->gr_name);
@@ -74,8 +74,10 @@ infos_t *fill_main_node(infos_t *main_node, char *filepath)
     node_t *file_infos = NULL;
     new_node->__dirp = opendir(filepath);
     struct dirent *my_dirent = readdir(new_node->__dirp);
+    struct stat sb;
+    stat(filepath, &sb);
     new_node->filepath = filepath;
-    new_node->total_blocks = 0;
+    new_node->total_blocks = 0, new_node->time = sb.st_mtime;
     while (my_dirent != NULL) {
         if (my_dirent->d_name[0] != '.') {
             file_infos = fill_sub_node(file_infos, my_dirent,

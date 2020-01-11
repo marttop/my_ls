@@ -32,6 +32,7 @@ typedef struct files {
 typedef struct infos {
     char *filepath;
     long int total_blocks;
+    long long time;
     struct node *head;
     struct node *temp;
     struct node *bottom;
@@ -43,8 +44,10 @@ typedef struct node {
     char *name;
     char *grp_name;
     char *usr_name;
+    long long time;
     char *mode;
     char *date;
+    int device;
     long unsigned int link;
     long int size;
     struct stat sb;
@@ -62,6 +65,9 @@ char *fill_str(char *res, char *src);
 int get_nb_files(char **src);
 infos_t *get_data(char **filepath);
 char *get_date(struct stat *sb);
+void get_end_sub(infos_t *fa);
+void s_pb_sub(infos_t *infos);
+void s_pb(files_t *fa);
 infos_t *fill_main_node(infos_t *main_node, char *filepath);
 node_t *fill_sub_node(node_t *file_infos, struct dirent *my_dirent,
                         infos_t *main_node, char *filepath);
@@ -85,6 +91,8 @@ void show_data(infos_t *node, char *flags, char **filepath, files_t *fa);
 int flagcheck(char c, char *flags);
 void print_l_flag(char **filepath, files_t *fa);
 void print_l_flag_file(char *str);
-
+void s_ra(files_t *fa);
+void s_ra_sub(infos_t *infos);
+void swap_n(files_t *fa);
 
 #endif /* !MY_LS_H_ */

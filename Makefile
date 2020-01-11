@@ -17,6 +17,8 @@ SRC	=	src/main.c \
 		src/print_flags.c \
 		src/sorting_nodes.c \
 		src/nodes.c \
+		src/sort_all.c \
+		src/s_ra.c \
 		utils/error.c \
 		utils/my_strlen.c \
 		utils/my_strcat.c \
