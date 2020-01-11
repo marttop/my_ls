@@ -15,6 +15,14 @@ void get_end(files_t *fa)
     fa->bottom = temp_node;
 }
 
+void get_end_sub(infos_t *fa)
+{
+    node_t *temp_node = fa->head;
+    for (; temp_node->next != NULL;)
+        temp_node = temp_node->next;
+    fa->bottom = temp_node;
+}
+
 int count_nodes(infos_t *node)
 {
     infos_t *temp = node;
