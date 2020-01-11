@@ -60,6 +60,7 @@ void swap_n(files_t *fa)
     int i = count_nodes(fa->head);
     long long biggest;
     fa->temp = NULL;
+    get_end(fa);
     for (; i > 0; i--) {
         biggest = get_biggest(fa);
         while (fa->head->time != biggest)
