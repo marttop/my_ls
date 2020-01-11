@@ -47,7 +47,8 @@ typedef struct node {
     long long time;
     char *mode;
     char *date;
-    int device;
+    int device_min;
+    int device_max;
     long unsigned int link;
     long int size;
     struct stat sb;

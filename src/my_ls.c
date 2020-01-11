@@ -59,8 +59,8 @@ node_t *fill_sub_node(node_t *file_infos, struct dirent *my_dirent,
     stat(new_filepath, &sb);
     pwd = getpwuid(sb.st_uid), grp = getgrgid(sb.st_gid);
     main_node->total_blocks += sb.st_blocks/2, new_infos->time = sb.st_mtime;
-    new_infos->mode = get_mode(&sb), new_infos->device = sb.st_rdev/256;
-    new_infos->date = get_date(&sb);
+    new_infos->mode = get_mode(&sb), new_infos->device_max = sb.st_rdev / 256;
+    new_infos->date = get_date(&sb), new_infos->device_min = sb.st_rdev % 256;
     new_infos->usr_name = my_strdup(pwd->pw_name);
     new_infos->grp_name = my_strdup(grp->gr_name);
     new_infos->link = sb.st_nlink, new_infos->size = sb.st_size;
