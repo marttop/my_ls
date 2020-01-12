@@ -28,7 +28,16 @@ SRC	=	src/main.c \
 		utils/my_put_nbr.c \
 		utils/my_strcmp.c \
 
-SRC_TEST	=	tests/test_all.c \
+SRC_TEST	=	utils/my_strlen.c \
+				utils/my_strcat.c \
+				utils/my_strdup.c \
+				utils/my_ptrlen.c \
+				utils/my_putstr.c \
+				utils/my_put_nbr.c \
+				utils/my_strcmp.c \
+				src/flag_parsor.c \
+				tests/utils_test.c \
+				tests/parsor_tests.c \
 
 OBJ	=	$(SRC:.c=.o)
 
